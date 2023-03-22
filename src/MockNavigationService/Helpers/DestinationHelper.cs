@@ -1,4 +1,4 @@
-﻿namespace Axemasta.MockNavigationService.Helpers;
+﻿namespace MockNavigationService.Helpers;
 
 /// <summary>
 /// Destination Helper

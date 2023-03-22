@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace Axemasta.MockNavigationService.Helpers;
+namespace MockNavigationService.Helpers;
 
 internal class EquivalenceHelper
 {

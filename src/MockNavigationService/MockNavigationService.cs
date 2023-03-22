@@ -1,7 +1,7 @@
 ﻿using Moq;
 using Prism.Common;
 
-namespace Axemasta.MockNavigationService;
+namespace MockNavigationService;
 
 public class MockNavigationService : Mock<INavigationService>, INavigationService, IRegistryAware
 {

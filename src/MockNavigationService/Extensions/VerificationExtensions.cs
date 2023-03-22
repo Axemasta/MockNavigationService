@@ -1,7 +1,7 @@
-﻿using Axemasta.MockNavigationService.Helpers;
+﻿using MockNavigationService.Helpers;
 using Moq;
 
-namespace Axemasta.MockNavigationService.Extensions;
+namespace MockNavigationService.Extensions;
 
 public static class VerificationExtensions
 {

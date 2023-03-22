@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Axemasta.MockNavigationService", "src\Axemasta.MockNavigationService\Axemasta.MockNavigationService.csproj", "{2F226B26-FBD7-4CF5-B64C-81830EE585C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockNavigationService", "src\MockNavigationService\MockNavigationService.csproj", "{2F226B26-FBD7-4CF5-B64C-81830EE585C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F37282DA-BEF1-4102-8105-E265E7A981A3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Axemasta.MockNavigationService.UnitTests", "tests\Axemasta.MockNavigationService.UnitTests\Axemasta.MockNavigationService.UnitTests.csproj", "{910916C1-E404-43F5-92A9-BA0AC8C6C3D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockNavigationService.UnitTests", "tests\MockNavigationService.UnitTests\MockNavigationService.UnitTests.csproj", "{910916C1-E404-43F5-92A9-BA0AC8C6C3D7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77A68A3E-9459-48EC-A8F2-979A83C0FFE9}"
 	ProjectSection(SolutionItems) = preProject
@@ -32,9 +30,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{910916C1-E404-43F5-92A9-BA0AC8C6C3D7} = {F37282DA-BEF1-4102-8105-E265E7A981A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15C5A17F-762D-4F3A-8F23-C5CD85689470}
