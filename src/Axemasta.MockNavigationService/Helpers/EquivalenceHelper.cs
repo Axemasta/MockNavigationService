@@ -1,26 +1,25 @@
 ﻿using FluentAssertions;
 
-namespace Axemasta.MockNavigationService.Helpers
+namespace Axemasta.MockNavigationService.Helpers;
+
+internal class EquivalenceHelper
 {
-    internal class EquivalenceHelper
+    public static bool Equivalent(object a, object b)
     {
-        public static bool Equivalent(object a, object b)
+        try
         {
-            try
+            if (a.Equals(b))
             {
-                if (a.Equals(b))
-                {
-                    return true;
-                }
-
-                a.Should().BeEquivalentTo(b);
-
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+
+            a.Should().BeEquivalentTo(b);
+
+            return true;
+        }
+        catch
+        {
+            return false;
         }
     }
 }

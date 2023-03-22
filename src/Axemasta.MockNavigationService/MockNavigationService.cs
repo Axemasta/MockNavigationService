@@ -1,83 +1,82 @@
 ﻿using Moq;
 using Prism.Common;
 
-namespace Axemasta.MockNavigationService
+namespace Axemasta.MockNavigationService;
+
+public class MockNavigationService : Mock<INavigationService>, INavigationService, IRegistryAware
 {
-    public class MockNavigationService : Mock<INavigationService>, INavigationService, IRegistryAware
+    private IViewRegistry viewRegistry;
+
+    public MockNavigationService()
     {
-        private IViewRegistry viewRegistry;
+        viewRegistry = new MockViewRegistry();
 
-        public MockNavigationService()
+        var mockResult = new Mock<INavigationResult>();
+
+        mockResult.SetupGet(m => m.Success)
+            .Returns(false);
+
+        this.Setup(m => m.NavigateAsync(It.IsAny<Uri>(), It.IsAny<INavigationParameters>()))
+            .ReturnsAsync(mockResult.Object);
+    }
+
+    #region INavigationService
+
+    public Task<INavigationResult> GoBackAsync(INavigationParameters parameters)
+    {
+        return Object.GoBackAsync(parameters);
+    }
+
+    public Task<INavigationResult> GoBackToAsync(string name, INavigationParameters parameters)
+    {
+        return Object.GoBackToAsync(name, parameters);
+    }
+
+    public Task<INavigationResult> GoBackToRootAsync(INavigationParameters parameters)
+    {
+        return Object.GoBackToRootAsync(parameters);
+    }
+
+    public Task<INavigationResult> NavigateAsync(Uri uri, INavigationParameters parameters)
+    {
+        return Object.NavigateAsync(uri, parameters);
+    }
+
+    #endregion INavigationService
+
+    #region IRegistryAware
+
+    public IViewRegistry Registry => viewRegistry;
+
+    #endregion IRegistryAware
+
+    private class MockViewRegistry : IViewRegistry
+    {
+        public IEnumerable<ViewRegistration> Registrations { get; } = new List<ViewRegistration>();
+
+        public object CreateView(IContainerProvider container, string name)
         {
-            viewRegistry = new MockViewRegistry();
-
-            var mockResult = new Mock<INavigationResult>();
-
-            mockResult.SetupGet(m => m.Success)
-                .Returns(false);
-
-            this.Setup(m => m.NavigateAsync(It.IsAny<Uri>(), It.IsAny<INavigationParameters>()))
-                .ReturnsAsync(mockResult.Object);
+            return name;
         }
 
-        #region INavigationService
-
-        public Task<INavigationResult> GoBackAsync(INavigationParameters parameters)
+        public string GetViewModelNavigationKey(Type viewModelType)
         {
-            return Object.GoBackAsync(parameters);
+            return viewModelType.Name;
         }
 
-        public Task<INavigationResult> GoBackToAsync(string name, INavigationParameters parameters)
+        public Type GetViewType(string name)
         {
-            return Object.GoBackToAsync(name, parameters);
+            return name.GetType();
         }
 
-        public Task<INavigationResult> GoBackToRootAsync(INavigationParameters parameters)
+        public bool IsRegistered(string name)
         {
-            return Object.GoBackToRootAsync(parameters);
+            return true;
         }
 
-        public Task<INavigationResult> NavigateAsync(Uri uri, INavigationParameters parameters)
+        public IEnumerable<ViewRegistration> ViewsOfType(Type baseType)
         {
-            return Object.NavigateAsync(uri, parameters);
-        }
-
-        #endregion INavigationService
-
-        #region IRegistryAware
-
-        public IViewRegistry Registry => viewRegistry;
-
-        #endregion IRegistryAware
-
-        private class MockViewRegistry : IViewRegistry
-        {
-            public IEnumerable<ViewRegistration> Registrations { get; } = new List<ViewRegistration>();
-
-            public object CreateView(IContainerProvider container, string name)
-            {
-                return name;
-            }
-
-            public string GetViewModelNavigationKey(Type viewModelType)
-            {
-                return viewModelType.Name;
-            }
-
-            public Type GetViewType(string name)
-            {
-                return name.GetType();
-            }
-
-            public bool IsRegistered(string name)
-            {
-                return true;
-            }
-
-            public IEnumerable<ViewRegistration> ViewsOfType(Type baseType)
-            {
-                return Registrations;
-            }
+            return Registrations;
         }
     }
 }

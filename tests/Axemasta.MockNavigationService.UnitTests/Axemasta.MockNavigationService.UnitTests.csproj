@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Axemasta.MockNavigationService\Axemasta.MockNavigationService.csproj" />
+    <ProjectReference Include="..\..\src\Axemasta.MockNavigationService\Axemasta.MockNavigationService.csproj" />
   </ItemGroup>
 
 </Project>
