@@ -50,6 +50,16 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Prism.Maui.Rx" Version="8.1.273-pre" />
+		<PackageReference Include="Prism.DryIoc.Maui" Version="8.1.273-pre" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="ViewModels\" />
+	  <None Remove="Views\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="ViewModels\" />
+	  <Folder Include="Views\" />
+	</ItemGroup>
 </Project>

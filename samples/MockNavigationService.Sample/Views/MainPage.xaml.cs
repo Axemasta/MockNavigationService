@@ -1,4 +1,4 @@
-﻿namespace MockNavigationService.Sample;
+﻿namespace MockNavigationService.Sample.Views;
 
 public partial class MainPage : ContentPage
 {
