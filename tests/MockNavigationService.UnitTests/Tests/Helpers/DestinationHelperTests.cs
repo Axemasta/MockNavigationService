@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using MockNavigationService.Helpers;
+﻿using MockNavigationService.Helpers;
 
 namespace MockNavigationService.UnitTests.Tests.Helpers;
 
