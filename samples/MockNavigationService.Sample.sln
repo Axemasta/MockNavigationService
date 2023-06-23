@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{6A54
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CFEB0440-30E4-4839-BD17-1B3DAFE4EA88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockNavigationService.Sample.UnitTests", "..\tests\MockNavigationService.Sample.UnitTests\MockNavigationService.Sample.UnitTests.csproj", "{A7BE05A8-1AA4-43E3-A7C7-378647F17046}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DF8CAD50-CFD4-4385-A9D3-EEAE5167E542}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF8CAD50-CFD4-4385-A9D3-EEAE5167E542}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF8CAD50-CFD4-4385-A9D3-EEAE5167E542}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7BE05A8-1AA4-43E3-A7C7-378647F17046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7BE05A8-1AA4-43E3-A7C7-378647F17046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7BE05A8-1AA4-43E3-A7C7-378647F17046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7BE05A8-1AA4-43E3-A7C7-378647F17046}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C8AED97C-BF0E-4FB3-903C-6123DFD32DFA} = {6A5489E5-24E5-4512-ACAC-EFC192CEC164}
 		{DF8CAD50-CFD4-4385-A9D3-EEAE5167E542} = {CFEB0440-30E4-4839-BD17-1B3DAFE4EA88}
+		{A7BE05A8-1AA4-43E3-A7C7-378647F17046} = {CFEB0440-30E4-4839-BD17-1B3DAFE4EA88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

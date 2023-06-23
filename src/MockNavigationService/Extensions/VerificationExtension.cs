@@ -3,7 +3,7 @@ using Moq;
 
 namespace MockNavigationService.Extensions;
 
-public static class VerificationExtensions
+public static class VerificationExtension
 {
     public static void VerifyNavigation(this MockNavigationService mockNavigationService, string destination, Times times)
     {

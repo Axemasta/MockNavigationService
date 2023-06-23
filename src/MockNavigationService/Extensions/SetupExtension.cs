@@ -3,7 +3,7 @@ using Moq;
 
 namespace MockNavigationService.Extensions;
 
-public static class SetupExtensions
+public static class SetupExtension
 {
     public static void SetupNavigationResult(this MockNavigationService mockNavigationService, string destination, bool success)
     {

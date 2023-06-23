@@ -17,26 +17,43 @@ internal class DestinationHelper
     {
         if (destination.EndsWith("Page", StringComparison.InvariantCultureIgnoreCase))
         {
+            // MainPage Passed in, Valid Destinations:
+            // - MainViewModel
+            // - MainPageViewModel
+
             var viewModel = destination.Replace("Page", "ViewModel", StringComparison.InvariantCultureIgnoreCase);
+            var pageViewModel = destination.Replace("Page", "PageViewModel", StringComparison.InvariantCultureIgnoreCase);
 
             return new List<string>()
             {
                 destination,
-                viewModel
+                viewModel,
+                pageViewModel,
             };
         }
         else if (destination.EndsWith("ViewModel", StringComparison.InvariantCultureIgnoreCase))
         {
+            // MainViewModel Passed in, Valid Destinations:
+            // - MainViewModel
+            // - MainPageViewModel
+
             var page = destination.Replace("ViewModel", "Page", StringComparison.InvariantCultureIgnoreCase);
+
+            if (page.EndsWith("PagePage"))
+            {
+                page = page.Remove(page.Length - 4, 4);
+            }
 
             return new List<string>()
             {
                 destination,
-                page
+                page,
             };
         }
         else
         {
+            // Maybe this doesn't help, should we warn the consumer?
+
             return new List<string>()
             {
                 destination,

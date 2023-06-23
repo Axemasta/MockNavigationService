@@ -25,4 +25,16 @@
     <ProjectReference Include="..\..\src\MockNavigationService\MockNavigationService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Tests\" />
+    <None Remove="Tests\Extensions\" />
+    <None Remove="Tests\Helpers\" />
+    <None Remove="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+    <Folder Include="Tests\Extensions\" />
+    <Folder Include="Tests\Helpers\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
 </Project>
