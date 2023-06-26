@@ -2,7 +2,7 @@
 
 namespace MockNavigationService.Sample.ViewModels;
 
-public partial class ContactViewModel : ViewModelBase, IInitialize
+public partial class ContactViewModel : ViewModelBase
 {
     [ObservableProperty]
     private ContactItem contact;
@@ -12,7 +12,7 @@ public partial class ContactViewModel : ViewModelBase, IInitialize
     {
     }
 
-    public void Initialize(INavigationParameters parameters)
+    public override void Initialize(INavigationParameters parameters)
     {
         if (!parameters.TryGetValue(Constants.ContactItemKey, out ContactItem contactItem))
         {

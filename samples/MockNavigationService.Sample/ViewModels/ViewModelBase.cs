@@ -2,7 +2,7 @@
 
 namespace MockNavigationService.Sample.ViewModels.Base;
 
-public class ViewModelBase : ObservableObject, INavigationAware
+public class ViewModelBase : ObservableObject, INavigationAware, IInitialize
 {
     private bool isBusy;
 
@@ -30,5 +30,7 @@ public class ViewModelBase : ObservableObject, INavigationAware
     public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
 
     public virtual void OnNavigatedTo(INavigationParameters parameters) { }
+
+    public virtual void Initialize(INavigationParameters parameters) { }
 }
 

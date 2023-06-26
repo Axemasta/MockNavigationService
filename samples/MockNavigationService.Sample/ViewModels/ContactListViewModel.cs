@@ -1,7 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.ApplicationModel.Communication;
+using MvvmHelpers;
 
 namespace MockNavigationService.Sample.ViewModels;
 
@@ -9,7 +8,7 @@ public partial class ContactListViewModel : ViewModelBase
 {
     private readonly IContactsService contactsService;
 
-    public ObservableCollection<ContactItem> Contacts { get; }
+    public ObservableRangeCollection<ContactItem> Contacts { get; } = new ObservableRangeCollection<ContactItem>();
 
     public ContactListViewModel(
         IContactsService contactsService,
@@ -19,10 +18,6 @@ public partial class ContactListViewModel : ViewModelBase
         Title = "Contacts";
 
         this.contactsService = contactsService;
-
-        var contacts = this.contactsService.GetContacts();
-
-        Contacts = new ObservableCollection<ContactItem>(contacts);
     }
 
     [RelayCommand]
@@ -47,6 +42,13 @@ public partial class ContactListViewModel : ViewModelBase
             .AddParameter(Constants.ContactItemKey, contact)
             .AddSegment<ContactViewModel>()
             .NavigateAsync();
+    }
+
+    public override void Initialize(INavigationParameters parameters)
+    {
+        var contacts = contactsService.GetContacts();
+
+        Contacts.ReplaceRange(contacts);
     }
 
     public override void OnNavigatedTo(INavigationParameters parameters)
