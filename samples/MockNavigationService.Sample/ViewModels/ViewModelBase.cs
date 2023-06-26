@@ -1,6 +1,8 @@
-﻿namespace MockNavigationService.Sample.ViewModels.Base;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-public class ViewModelBase : BindableBase
+namespace MockNavigationService.Sample.ViewModels.Base;
+
+public class ViewModelBase : ObservableObject, INavigationAware
 {
     private bool isBusy;
 
@@ -24,5 +26,9 @@ public class ViewModelBase : BindableBase
     {
         this.navigationService = navigationService;
     }
+
+    public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
+
+    public virtual void OnNavigatedTo(INavigationParameters parameters) { }
 }
 

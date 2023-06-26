@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MockNavigationService.Sample.Converters"
+             xmlns:viewmodels="clr-namespace:MockNavigationService.Sample.ViewModels"
+             xmlns:models="clr-namespace:MockNavigationService.Sample.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MockNavigationService.Sample.Views.ContactListPage"
+             x:DataType="viewmodels:ContactListViewModel"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ContactInitialsConverter x:Key="contactInitialsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddContactCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView
+        ItemsSource="{Binding Contacts}"
+        SelectionMode="Single"
+        SelectionChangedCommand="{Binding ContactSelectedCommand}"
+        SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:ContactItem">
+
+                <Grid RowDefinitions="auto, 1" RowSpacing="0">
+
+                        <Grid
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="20"
+                            ColumnDefinitions="Auto, *"
+                            ColumnSpacing="20"
+                            RowSpacing="0">
+
+                            <toolkit:AvatarView
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource Primary}"
+                                TextColor="{StaticResource White}"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                Text="{Binding ., Converter={StaticResource contactInitialsConverter}}"/>
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                TextColor="{DynamicResource PrimaryColor}"
+                                VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding FirstName}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding LastName}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </Grid>
+
+                        <BoxView
+                            Grid.Row="1"
+                            Margin="20,0,0,0"
+                            BackgroundColor="{DynamicResource SeparatorColor}"
+                            HeightRequest="1"
+                            VerticalOptions="End" />
+                    </Grid>
+            </DataTemplate>
+
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+</ContentPage>
